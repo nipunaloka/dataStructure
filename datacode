@@ -1,0 +1,609 @@
+**// Array------------------
+public class ArrayofCurd {
+
+    public static void main(String[] args) {
+        
+        search();
+        
+        
+    }
+    
+    public static void search(){
+        int numElem, i, findElem, key=0;
+        Scanner s = new Scanner(System.in);
+        
+        System.out.println("Enter the nu. of element you want: ");
+        numElem = s.nextInt();
+        
+        int[] arr = new int[numElem+1];  // array cretaion
+        
+        System.out.println("Enter the Elements: ");
+        for(i =0; i<numElem; i++){
+            arr[i] = s.nextInt();
+        }
+        
+        //Sreach opetaion
+        System.out.println("Enter the element you want to find:  ");
+        findElem = s.nextInt();
+        
+        for(i=0; i<numElem; i++){
+            if(arr[i] == findElem){
+                key = 1;
+                break;
+            }else{
+                key = 0;
+            }
+        }
+        
+        if(key == 1){
+            System.out.println("Element found at index: " + i);
+        }
+        if(key == 0 ){
+            System.out.println("Element Not found ");
+        }
+        
+        insert(numElem, arr);
+        delete(numElem, arr);
+          
+    }
+    
+    public static void insert(int numElem, int arr[]){
+        Scanner s = new Scanner(System.in);
+        int index, inElem;
+        
+        System.out.println("Enter the index where you want to insert element: ");
+        index = s.nextInt();
+        
+        System.out.println("Enter the element you want to insert: " );
+        inElem = s.nextInt();
+        
+        for(int i= (numElem - 1); i >= index; i--){
+            arr[i+1] = arr[i];
+        }
+        
+        arr[index] = inElem;
+        
+        System.out.println("Array data structure after Insertion Operation:\n");
+        
+        for(int i =0; i< numElem +1; i++){
+            System.out.print(arr[i] + " ");
+        }
+        
+    }
+    
+    public static void delete(int numElem, int arr[]){
+        Scanner input = new Scanner(System.in);
+        int delIndex;
+        
+        System.out.println("\nEnter the index of element which you want to delete: ");
+        delIndex = input.nextInt();
+        
+        for(int i= delIndex; i< numElem ; i++){
+            arr[i] = arr[i+1];
+        }
+        
+        numElem--;
+        System.out.println("Array data structure after Deletion Opereation:");
+        
+        for(int i =0; i<=numElem; i++){
+            System.out.println(arr[i] + " ");
+        }
+        
+    }
+}
+//---------------------------------------------------------------------------------------
+
+
+**//Stack array------------
+
+*/
+public class StackApplicationRevison {
+    
+    private int maxSize;  //size of array
+    private int[] stackData; //array initialize not create
+    private int top;  //top of stack;
+    
+    
+    public StackApplicationRevison(int size){
+        top = -1;  // no item yet
+        this.maxSize = size; //set the array size
+        stackData = new int[maxSize];
+    }
+    
+    public boolean isEmpty(){
+        return top == -1;
+    }
+    
+    public boolean isFull(){
+        return (top == maxSize -1);
+    }
+    
+    public void push(int j){
+        if(isFull() == true){
+            System.out.println("Can't insert , stack is full");
+        }
+        top+=1;
+        stackData[top] = j;
+        System.out.println(j+" is pushed");
+    }
+    
+    public int pop(){
+        if(isEmpty() == true){
+            System.out.println("Can't pop, stack is empty");
+        }
+        
+        int removeItem = stackData[top];
+        
+        top-=1;
+        return removeItem;
+    }
+    
+    public int peek(){
+        return stackData[top];
+    }
+    
+    public void display(){
+        System.out.println("Current List Values are :");
+        for(int i = top; i >=0; i--){
+            System.out.print(stackData[i] + " ");
+        }
+        System.out.println();
+    }
+    
+    public static void main(String[] args) {
+        
+        StackApplicationRevison st = new StackApplicationRevison(4);
+        
+        System.out.println("stack is Full: " + st.isFull());
+        System.out.println("Stack is Empty: " + st.isEmpty());
+        
+        st.push(10);
+        st.push(20);
+        st.push(30);
+        st.push(40);
+        
+        st.display();
+        
+        System.out.println("stack is Full: " + st.isFull());
+        System.out.println("Stack is Empty: " + st.isEmpty());
+        
+        System.out.println(st.peek() + " : is the top most value of stack");
+        
+        st.pop();
+        st.display();
+        
+        System.out.println("stack is Full: " + st.isFull());
+        System.out.println("Stack is Empty: " + st.isEmpty());
+        System.out.println(st.peek() + " : is the top most value of stack");
+        
+       
+    }
+}
+
+//---------------------------------------------------------------------------
+
+**// Queue data structer
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.datastructqueue;
+
+/**
+ *
+ * @author Nipun
+ */
+
+class Queue{
+        
+        private int queuesize;
+        private int[] myqueue;
+        private int front;
+        private int rear;
+        private int nElemnts;
+        
+        public Queue(int size){
+            this.queuesize = size;
+            myqueue = new int[queuesize];
+            front = 0;
+            rear = -1;
+            nElemnts = 0;
+        }
+        
+        public void display(){
+            for(int i = front; i <= rear; i++){
+                System.out.print(myqueue[i] + ", ");
+            }
+            System.out.println();
+        }
+    
+        public boolean isEmpty(){
+            return nElemnts ==0;
+        }
+        
+        public boolean isFull(){
+            return nElemnts == queuesize;
+        }
+        
+        public void insert(int value){
+            if(isFull() == false){
+                rear++;
+                myqueue[rear] = value;
+                nElemnts++;
+            }else{
+                System.out.println("Queue is Full\n");
+            }
+        }
+        
+        public void remove(){
+            if(isEmpty() == false){
+                front++;
+                nElemnts--;
+                System.out.println("remove first elemnt: ");
+            }else{
+                System.out.println("Queue is Empty");
+            }
+        }
+        
+        public int peek(){
+            return myqueue[front];
+        }
+        
+        public int size(){
+            return nElemnts;
+        }
+    }
+
+public class DataStructQueue {
+    
+    public static void main(String[] args) {
+        
+        Queue q = new Queue(3);
+        
+        System.out.println("Queue number of element: " + q.size());
+        
+        q.insert(11);
+        q.insert(22);
+        q.insert(33);
+        
+        q.display();
+        
+        System.out.println(q.peek() + ": is the peek value(front)");
+        System.out.println("Queue Numbe of elemnts: " + q.size());
+        
+        q.remove();
+        q.display();
+        
+        System.out.println(q.peek() + ": is the peek value(front)");
+        System.out.println("Queue Numbe of elemnts: " + q.size());
+        
+        
+    }
+    
+}
+
+//--------------------------------------------
+
+**// Binary Search Tree
+
+class BST_tree { 
+    //node class that defines BST node
+    class Node { 
+        int data; 
+        Node left; 
+        Node right; 
+   
+        public Node(int data){ 
+            this.data = data; 
+            this.left = null; 
+            this.right = null; 
+        } 
+    } 
+    // BST root node 
+    Node root; 
+  
+   // Constructor for BST =>initial empty tree
+    BST_tree(){ 
+        root = null; 
+    } 
+    //delete a node from BST
+    void deleteKey(int data) { 
+        root = delete_Traversal(root, data); 
+    } 
+   
+    //recursive delete function
+    Node delete_Traversal(Node root, int data)  { 
+        //tree is empty
+        if (root == null)  return root; 
+   
+        //traverse the tree
+        if (data < root.data)     //traverse left subtree 
+            root.left = delete_Traversal(root.left, data); 
+        else if (data > root.data)  //traverse right subtree
+            root.right = delete_Traversal(root.right, data); 
+        else  { 
+            // node contains only one child
+            if (root.left == null) 
+                return root.right; 
+            else if (root.right == null) 
+                return root.left; 
+   
+            // node has two children; 
+            //get inorder successor (min value in the right subtree) 
+            root.data = minValue(root.right); 
+   
+            // Delete the inorder successor 
+            root.right = delete_Traversal(root.right, root.data); 
+        } 
+        return root; 
+    } 
+   
+    int minValue(Node root)  { 
+        //initially minval = root
+        int minval = root.data; 
+        //find minval
+        while (root.left != null)  { 
+            minval = root.left.data; 
+            root = root.left; 
+        } 
+        return minval; 
+    } 
+   
+    // insert a node in BST 
+    void insert(int data)  { 
+        root = insert_Node(root, data); 
+    } 
+   
+    //recursive insert function
+    Node insert_Node(Node root, int data) { 
+          //tree is empty
+        if (root == null) { 
+            root = new Node(data); 
+            return root; 
+        } 
+        //traverse the tree
+        if (data < root.data)     //insert in the left subtree
+            root.left = insert_Node(root.left, data); 
+        else if (data > root.data)    //insert in the right subtree
+            root.right = insert_Node(root.right, data); 
+          // return pointer
+        return root; 
+    } 
+ 
+// method for inorder traversal of BST 
+    void inorder() { 
+        inorder_Traversal(root); 
+    } 
+    void preorder() { 
+        preorder_Traversal(root); 
+    } 
+      void postorder() { 
+        postorder_Traversal(root); 
+    } 
+ 
+    // recursively traverse the BST  
+    void inorder_Traversal(Node root) { 
+        if (root != null) { 
+            inorder_Traversal(root.left); 
+            System.out.print(root.data + " "); 
+            inorder_Traversal(root.right); 
+        } 
+    }
+        // recursively traverse the BST  
+    void preorder_Traversal(Node root) { 
+        if (root != null) { 
+            System.out.print(root.data + " "); 
+            preorder_Traversal(root.left); 
+            preorder_Traversal(root.right); 
+        } 
+    }
+        void postorder_Traversal(Node root) { 
+        if (root != null) { 
+            postorder_Traversal(root.left); 
+            postorder_Traversal(root.right); 
+            System.out.print(root.data + " "); 
+            
+        } 
+    }
+     
+    boolean search(int data)  { 
+        root = search_Node(root, data); 
+        if (root!= null)
+            return true;
+        else
+            return false;
+    } 
+   
+    //recursive insert function
+    Node search_Node(Node root, int data)  { 
+        // Base Cases: root is null or key is present at root 
+        if (root==null || root.data==data) 
+            return root; 
+        // val is greater than root's key 
+        if (root.data > data) 
+            return search_Node(root.left, data); 
+        // val is less than root's key 
+        return search_Node(root.right, data); 
+    } 
+}
+
+public class Lab13 {
+
+    public static void main(String[] args) {
+ 
+           //create a BST object
+        BST_tree bst = new BST_tree(); 
+        /* BST tree example
+               8 
+            /    \ 
+          6      13 
+         /  \    /  \ 
+        3   7  10    15*/
+        //insert data into BST
+        bst.insert(8); 
+        bst.insert(6); 
+        bst.insert(3); 
+        bst.insert(7); 
+        bst.insert(13); 
+        bst.insert(10); 
+        bst.insert(15); 
+        System.out.println("Inorder traversal.");
+        bst.inorder(); 
+        System.out.println("\nPreorder traversal.");
+        bst.preorder(); 
+        System.out.println("\nPostorder traversal.");
+        bst.postorder(); 
+        bst.deleteKey(6);
+        System.out.println("\nAfter delete the value 6.");
+        bst.inorder(); 
+		}
+}
+
+
+
+//----------------------------------------------------------------------------
+
+
+**// linked list-------------
+
+package linkedlistapplication;
+//public class LinkedListApplication {
+
+class Node {
+public int item;
+public Node next;
+public Node(int i) {
+item = i;
+next = null;
+}
+
+public void displayNode() {
+System.out.println(item);
+}
+}
+
+public class LinkedListApplication {
+    
+private Node head;
+public void LinkList() {
+head = null;
+}
+
+public boolean isEmpty() {
+return (head == null);
+}
+
+public void insertFirst(int i) {
+Node newNode = new Node(i);
+newNode.next = head;
+head = newNode;
+//System.out.println("Item " + i + "is inserted to the List");
+}
+
+public Node deleteFirst() {
+Node nodeDel = null;
+if (isEmpty()) {
+System.out.println("List is empty");
+} 
+
+else {
+nodeDel = head;
+head = nodeDel.next;
+nodeDel.next = null;
+System.out.println("the first element was deleted");
+}
+return nodeDel;
+}
+
+public void displayList() {
+Node current;
+if (isEmpty()) {
+System.out.println("List is empty");
+} else {
+System.out.println("List elements are :");
+current = head;
+while (current != null) {
+System.out.println(current.item);
+current = current.next;
+}
+}
+}
+
+public Node find(int key) {
+Node current = null;
+int i = 1;
+if (isEmpty()) {
+System.out.println("List is empty");
+} else {
+current = head;
+while (current != null && i != key) {
+current = current.next;
+i++;
+}
+
+if (current == null) {
+System.out.println("no item for the relevnt key");
+}
+}
+return current;
+}
+
+public void delete(int key) {
+Node current = null;
+Node previous = null;
+int i = 1;
+if (isEmpty()) {
+System.out.println("List is empty");
+} else {
+current = head;
+previous = head;
+while (current != null && i != key) {
+previous = current;
+current = current.next;
+i++;
+}
+
+if (current == null) {
+System.out.println("no item for the relevnt key");
+} else if (current == head) {
+head = head.next;
+System.out.println("the item " + current.item + " was deleted");
+} else {
+previous.next = current.next;
+System.out.println("the item " + current.item + " was deleted");
+}
+}
+
+}
+
+public static void main(String[] args) {
+        
+LinkedListApplication mylist = new LinkedListApplication();
+    mylist.insertFirst(10);
+    mylist.insertFirst(20);
+    mylist.insertFirst(30);
+    mylist.insertFirst(40);
+    mylist.displayList();
+    
+Node returnFirstnode = mylist.deleteFirst();;
+    if (returnFirstnode != null) {
+        System.out.print(" the deleted first element value is :");
+        System.out.println(returnFirstnode.item);
+}
+    
+mylist.displayList();
+Node returnNode = mylist.find(1);
+    if (returnNode != null) {
+        System.out.print(" the relevant searched element vaue is :");
+        System.out.println(returnNode.item);
+}
+    
+    mylist.delete(2);
+    mylist.displayList();
+}
+      
+    }
+    
+
+
