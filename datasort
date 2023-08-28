@@ -1,0 +1,177 @@
+////Bubble sort
+
+public class Sort_buble {
+
+    public static void main(String[] args) {
+        
+        int arr[] = {5,3,1,9,8,2,4,7};
+        System.out.println("Array before Buble sort");
+        
+        for(int i=0; i<arr.length; i++){
+            System.out.print(arr[i] + " ");
+        }
+        
+        System.out.println();
+        int output[] = bublesort(arr);
+        
+        System.out.println("After buble sort");
+        for(int i=0; i< arr.length; i++){
+            System.out.print(output[i] + " ");
+        }
+        
+    }
+    
+    public static int[] bublesort(int[] data){
+        
+        for(int i=0; i<data.length; i++){
+            for(int j=0; j<data.length-1; j++){
+                if(data[j] > data[j+1]){
+                    int temp = data[j];
+                    data[j] = data[j+1];
+                    data[j+1]= temp;
+                }
+            }
+        }
+        return data;
+    }
+}
+
+
+//--------------------------------------------------------------
+
+**//Selection Sort
+
+public class ExerciseSelectionSort {
+
+    public static void main(String[] args) {
+        
+        int[] input = {1,34,2,4,6,10};
+        
+        for(int a : input){
+            System.out.print(a + " ");
+        }
+        
+        System.out.println();
+        
+        int[] output = selectionSort(input);
+        for(int b : output){
+            System.out.print(b + " ");
+        }
+        //System.out.println("Hello World!");
+    }
+    
+    public static int[] selectionSort(int[] data){
+        
+        for(int i=0; i<data.length -1; i++){
+            int minPos = i;
+            
+            for(int j= i + 1; j<data.length; j++){
+                if(data[j] < data[minPos]){
+                    minPos = j;
+                }
+            }
+            int temp = data[minPos];
+            data[minPos] = data[i];
+            data[i] = temp;
+        }
+        return data;
+    }
+}
+
+
+//--------------------------------------------------------------
+
+**//Inserion sort
+
+public class SortingTesting3 {
+
+    public static void main(String[] args) {
+        System.out.println("Array Before Insertion Sort Sort");
+        int[] input = {18,7,22,10,2};
+        for(int a : input) {
+            System.out.print(a + ", ");
+        }
+        
+        System.out.println();
+        
+        int[] output = insertionSort(input);
+        System.out.println("Array After Insertion Sort Sort");
+        for(int a : output) {
+            System.out.print(a+ ", ");
+        }
+    }
+    
+    //insertion sort method
+    public static int[] insertionSort(int[] data) {
+        for (int i = 1,j; i < data.length; i++) 
+        {
+            /*storing current element whose left side is checked for its correct position .*/
+            int tmp = data[i];
+            /* check whether the adjacent element in left side is greater or less than the
+            current element. */
+            for (j = i; j > 0 && tmp < data[j-1]; j--) 
+            {
+            // moving the left side element to one position forward.
+                data[j] = data[j-1];
+            }
+
+            // moving current element to its correct position.
+            data[j] = tmp; //Perform the insertion or the element is placed in its correct position
+        }
+        return data;
+    }  
+}
+
+//-------------------------------------------------------------
+
+**//Merge sort
+void merge(int a[], int beg, int mid, int end)    
+{    
+    int i, j, k;  
+    int n1 = mid - beg + 1;    
+    int n2 = end - mid;    
+      
+    int LeftArray[n1], RightArray[n2]; //temporary arrays  
+      
+    /* copy data to temp arrays */  
+    for (int i = 0; i < n1; i++)    
+    LeftArray[i] = a[beg + i];    
+    for (int j = 0; j < n2; j++)    
+    RightArray[j] = a[mid + 1 + j];    
+      
+    i = 0, /* initial index of first sub-array */  
+    j = 0; /* initial index of second sub-array */   
+    k = beg;  /* initial index of merged sub-array */  
+      
+    while (i < n1 && j < n2)    
+    {    
+        if(LeftArray[i] <= RightArray[j])    
+        {    
+            a[k] = LeftArray[i];    
+            i++;    
+        }    
+        else    
+        {    
+            a[k] = RightArray[j];    
+            j++;    
+        }    
+        k++;    
+    }    
+    while (i<n1)    
+    {    
+        a[k] = LeftArray[i];    
+        i++;    
+        k++;    
+    }    
+      
+    while (j<n2)    
+    {    
+        a[k] = RightArray[j];    
+        j++;    
+        k++;    
+    }    
+}    
+
+//-------------------------------------------------------------
+
+
