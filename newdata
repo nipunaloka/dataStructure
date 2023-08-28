@@ -1,0 +1,149 @@
+//----array--------------------------------------
+[6:57 PM, 8/27/2023] වත්තා: package com.mycompany.test;
+
+import java.util.Arrays;
+
+public class Stud {
+	
+	static int[] arr ={103,101,74,107,84,109,67,111,113};
+	
+	public void find() {
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i]==84) {
+				System.out.println("Index is "+ i);
+				break;
+			}
+		}
+	}
+	
+	public void insert(int index, int val) {
+			
+			int[] newArr = new int[arr.length+1];
+			for (int i=0,j=0;i<newArr.length;i++) {
+				if (i == index) {
+					newArr[i]=val;
+				}else {
+					newArr[i]=arr[j++];
+				}
+			}
+		
+		arr=newArr;
+		System.out.println("after insert: "+Arrays.toString(arr));
+		}
+	
+	
+	public void delete(int index) {
+			
+			int[] newArr = new int[arr.length-1];
+			for (int i=0,j=0;i<newArr.length;i++) {
+				if (i == index) {
+					j++;
+				}
+				newArr[i]=arr[j++];
+		…
+[6:57 PM, 8/27/2023] වත්තා: Q1.... Array
+[9:18 PM, 8/27/2023] සෙරුවා Agni Ne: import java.util.Stack;
+public class Que{
+    public static void main(String[] args) {
+        Stack<Integer> stk = new Stack<>();
+        boolean result = stk.empty();
+        System.out.println("stack is : " + result);
+        stk.push(15);
+        stk.push(25);
+        stk.push(150);
+        stk.push(180);
+        System.out.println("top element is" + stk.peek());
+        System.out.println("stack is " + stk);
+        stk.pop();
+        System.out.println("new stack is:" + stk);
+        result = stk.empty();
+        System.out.println("is the stack emty" + result);
+    }}
+[10:24 PM, 8/27/2023] වත්තා: import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int[] num ={56,36,98,11,22,78,02,65};
+        System.out.println(Arrays.toString(num));
+        selectionSort(num);
+        System.out.println(Arrays.toString(num));
+
+    }
+    private static void selectionSort(int[] num) {
+        for (int i = 0; i < num.length; i++) {
+            int min = num[i];
+            int inofmin= i;
+            for (int j = i+1; j < num.length ; j++) {
+                if(num[j] < min){
+                    min = num[j];
+                    inofmin =j;
+                }
+            }
+            swap(num, i, inofmin);
+
+        }
+    }
+    private static void swap(int[] num, int a, int b) {
+        int temp = num[a];
+        num[a] = num[b];
+        num[b] = temp;
+    }
+}
+--------------------------------------------------------------------------------------------------
+
+
+//---linked list------------------------------------
+package com.mycompany.test;
+
+import java.util.LinkedList;
+import java.util.List;
+public class Array {
+	
+	
+
+	public static void main(String[] args) {
+		LinkedList<Integer> list= new LinkedList (List.of(21,05,76));
+		System.out.println(list);
+		list.addFirst(10);
+		list.addFirst(32);
+		System.out.println(list);
+		list.add(5, 100);
+		list.add(6, 45);
+		System.out.println(list);
+		list.addLast(99);
+		list.addLast(02);
+		list.addLast(83);
+		System.out.println(list);
+		
+		list.forEach(n -> System.out.println(n));
+		
+		list.remove(7);
+		System.out.println(list);
+		System.out.println(list.contains(100));
+		System.out.println(list.contains(99));
+	
+
+	}
+
+}
+-------------------------------------------------
+
+//-----stack----------------------------------------
+import java.util.Stack;
+public class Que{
+    public static void main(String[] args) {
+        Stack<Integer> stk = new Stack<>();
+        boolean result = stk.empty();
+        System.out.println("stack is : " + result);
+        stk.push(15);
+        stk.push(25);
+        stk.push(150);
+        stk.push(180);
+        System.out.println("top element is" + stk.peek());
+        System.out.println("stack is " + stk);
+        stk.pop();
+        System.out.println("new stack is:" + stk);
+        result = stk.empty();
+        System.out.println("is the stack emty" + result);
+    }}
